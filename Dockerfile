@@ -10,6 +10,8 @@ WORKDIR /app
 
 COPY --from=build /app/out ./
 
+COPY --from=build /source/WebInterface ./WebInterface
+
 RUN apt-get update && apt-get install -y \
     ffmpeg \
     python3 \
@@ -21,4 +23,7 @@ RUN curl -L -o youtube-dl https://github.com/yt-dlp/yt-dlp/releases/latest/downl
     chmod +x youtube-dl
 
 VOLUME /app/data
-CMD ["dotnet", "TS3AudioBot.dll", "--non-interactive"]
+
+WORKDIR /app/data
+
+ENTRYPOINT ["dotnet", "/app/TS3AudioBot.dll", "--non-interactive"]
