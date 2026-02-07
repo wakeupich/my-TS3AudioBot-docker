@@ -19,8 +19,8 @@ RUN apt-get update && apt-get install -y \
     libopus-dev \
     && rm -rf /var/lib/apt/lists/*
 
-RUN curl -L -o youtube-dl https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp_linux && \
-    chmod +x youtube-dl
+RUN curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp_linux -o /usr/local/bin/youtube-dl && \
+    chmod a+rx /usr/local/bin/youtube-dl
 
 VOLUME /app/data
 
