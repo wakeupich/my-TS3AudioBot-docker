@@ -10,7 +10,7 @@ WORKDIR /app
 
 COPY --from=build /app/out ./
 
-COPY --from=build /source/WebInterface ./WebInterface
+COPY --from=build /source/WebInterface/src/html ./WebInterface
 
 RUN apt-get update && apt-get install -y \
     ffmpeg \
